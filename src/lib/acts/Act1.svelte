@@ -2,10 +2,11 @@
   import { onMount, afterUpdate } from 'svelte';
   import * as d3 from 'd3';
   import { generateAdData } from '../utils/dataGenerator.js';
+  import { totalImpressions } from '../stores.js';
 
   export let title = "1. The Aggregate Picture";
 
-  let totalImpressions = 5000;
+
   let chartEl;
 
   function rate(arr) {
@@ -13,7 +14,7 @@
     return (arr.filter((r) => r.delivered).length / arr.length) * 100;
   }
 
-  $: records = generateAdData({ totalImpressions, imbalance: 0.6 });
+  $: records = generateAdData({ totalImpressions: $totalImpressions, imbalance: 0.6 });
   $: groupARate = rate(records.filter((r) => r.group === 'A'));
   $: groupBRate = rate(records.filter((r) => r.group === 'B'));
 
@@ -88,13 +89,13 @@
   </p>
 
   <label class="slider-label">
-    Total impressions simulated: {totalImpressions.toLocaleString()}
+    Total impressions simulated: {$totalImpressions.toLocaleString()}
     <input
       type="range"
       min="500"
       max="20000"
       step="500"
-      bind:value={totalImpressions}
+      bind:value={$totalImpressions}
     />
   </label>
 

@@ -4,6 +4,7 @@
   import Act3 from './lib/acts/Act3.svelte';
   import Act4 from './lib/acts/Act4.svelte';
   import Act5 from './lib/acts/Act5.svelte';
+  import Coda from './lib/acts/Coda.svelte';
 </script>
 
 <main>
@@ -19,6 +20,7 @@
   <Act3 />
   <Act4 />
   <Act5 />
+  <Coda />
 
   <footer>
     <p></p>

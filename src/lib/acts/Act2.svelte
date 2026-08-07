@@ -48,6 +48,121 @@
     };
   });
 
+  const UNIT_SAMPLE_SIZE = 150;
+  let unitChartEl;
+
+  $: unitRecords = generateAdData({
+    totalImpressions: UNIT_SAMPLE_SIZE,
+    imbalance: $imbalance
+  });
+
+  function drawUnits() {
+    if (!unitChartEl) return;
+
+    const width = 400;
+    const iconScale = 3.5; // single source of truth for icon size and change this one number to resize everything
+    const headRadius = iconScale;
+    const bodyHeight = iconScale * 4.5;
+    const rowSpacing = bodyHeight + iconScale * 5; // enough clearance to avoid overlap
+    const colSpacing = iconScale * 7.5;
+
+    const color = (d) => (d.group === 'A' ? '#6B4E9E' : '#2A9D8F');
+
+    let positions;
+    let requiredHeight;
+
+    if (view === 'aggregate') {
+      const cols = 15;
+      const rows = Math.ceil(unitRecords.length / cols);
+      requiredHeight = 30 + rows * rowSpacing + 20;
+
+      positions = unitRecords.map((d, i) => ({
+        ...d,
+        x: 20 + (i % cols) * colSpacing,
+        y: 30 + Math.floor(i / cols) * rowSpacing
+      }));
+    } else {
+      const clusterWidth = width / 3;
+      const catIndex = { Employment: 0, Housing: 1, Retail: 2 };
+      const counters = { Employment: 0, Housing: 0, Retail: 0 };
+      const colsPerCluster = 4;
+
+      // Count icons per category first, so we know the worst-case
+      // row count before laying anything out.
+      const categoryCounts = { Employment: 0, Housing: 0, Retail: 0 };
+      unitRecords.forEach((d) => categoryCounts[d.category]++);
+      const maxCount = Math.max(...Object.values(categoryCounts));
+      const maxRows = Math.ceil(maxCount / colsPerCluster);
+      requiredHeight = 45 + maxRows * rowSpacing + 20;
+
+      positions = unitRecords.map((d) => {
+        const idx = counters[d.category]++;
+        const clusterX = catIndex[d.category] * clusterWidth;
+        return {
+          ...d,
+          x: clusterX + 25 + (idx % colsPerCluster) * colSpacing,
+          y: 45 + Math.floor(idx / colsPerCluster) * rowSpacing
+        };
+      });
+    }
+
+    const svg = d3.select(unitChartEl);
+    svg.attr('viewBox', `0 0 ${width} ${requiredHeight}`);
+
+    const groups = svg.selectAll('.person').data(positions, (d, i) => i);
+
+    const entered = groups.enter().append('g').attr('class', 'person');
+
+    entered.append('circle').attr('class', 'head');
+    entered.append('path').attr('class', 'body');
+
+    const merged = entered.merge(groups);
+
+    merged.transition().duration(600).attr('transform', (d) => `translate(${d.x},${d.y})`);
+
+    merged.select('.head').attr('r', headRadius);
+
+    merged
+      .select('.body')
+      .attr(
+        'd',
+        `M ${-headRadius * 1.3} ${headRadius * 1.5}
+         Q 0 ${headRadius * 0.7} ${headRadius * 1.3} ${headRadius * 1.5}
+         L ${headRadius * 1.3} ${bodyHeight}
+         Q 0 ${bodyHeight * 1.15} ${-headRadius * 1.3} ${bodyHeight}
+         Z`
+      );
+
+    merged
+      .select('.head')
+      .attr('fill', (d) => (d.delivered ? color(d) : 'none'))
+      .attr('stroke', color)
+      .attr('stroke-width', 1.2);
+
+    merged
+      .select('.body')
+      .attr('fill', (d) => (d.delivered ? color(d) : 'none'))
+      .attr('stroke', color)
+      .attr('stroke-width', 1.2);
+
+    svg.selectAll('.cluster-label').remove();
+    if (view === 'sliced') {
+      const clusterWidth = width / 3;
+      ['Employment', 'Housing', 'Retail'].forEach((cat, i) => {
+        svg
+          .append('text')
+          .attr('class', 'cluster-label')
+          .attr('x', i * clusterWidth + clusterWidth / 2)
+          .attr('y', 15)
+          .attr('text-anchor', 'middle')
+          .attr('font-size', '12px')
+          .attr('fill', '#666')
+          .text(cat);
+      });
+    }
+  }
+
+
   function drawAggregate() {
     const data = [
       { group: 'Group A', value: groupARate },
@@ -115,6 +230,7 @@
   function draw() {
     if (!chartEl) return;
     view === 'aggregate' ? drawAggregate() : drawSliced();
+    drawUnits();
   }
 
   onMount(draw);
@@ -143,7 +259,10 @@
     <input type="range" min="0" max="1" step="0.05" bind:value={$imbalance} />
   </label>
 
-  <svg bind:this={chartEl} width="100%" height="320"></svg>
+  <div class="charts-row">
+    <svg bind:this={chartEl} width="50%" height="320"></svg>
+    <svg bind:this={unitChartEl} width="50%"></svg>
+  </div>
 
   <div class="composition">
     <h4>Where each group actually lands:</h4>
@@ -168,4 +287,13 @@
   .hint { display: block; font-size: 0.8rem; color: #888; font-weight: normal; }
   input[type='range'] { width: 100%; margin-top: 0.5rem; }
   .composition { margin-top: 1.5rem; font-size: 0.9rem; color: #555; }
+  .charts-row {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+  .charts-row svg {
+    flex: 1;
+    min-width: 0;
+  }
 </style>
