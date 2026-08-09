@@ -244,6 +244,37 @@
     Employment, Housing, or Retail.
   </p>
 
+  <p>
+  Here, the story turns. Instead of looking only at the big picture, you are invited to 
+  slice the same data by the type of ad being delivered, Employment ads, Housing ads, 
+  and Retail ads. A toggle lets you switch between the aggregate view you just saw and 
+  this new, more granular view. Alongside the toggle is a slider that controls how concentrated 
+  each group is within these categories. Turn it up, and Group A becomes increasingly 
+  funneled into certain categories while Group B becomes funneled into others. 
+  </p>
+
+  <p> 
+  This is where the visualization does something a plain chart can't, it shows you the 
+  actual people. A field of small human shaped icons represents the individuals in the 
+  simulation, each colored by group membership, each either filled in (meaning they were 
+  delivered the ad) or left hollow (meaning they werent delivered the ad). When you switch 
+  from the aggregate view to the by-category view, you don't see a new chart appear out 
+  of nowhere, you watch the very same icons glide from a single undivided crowd into three 
+  distinct clusters, one per category. Nobody is added. Nobody disappears. The only thing that 
+  changes is how they're grouped. The visual continuity matters, because it's proof, not 
+  assertion, that this is still the same dataset you were looking at moment ago. 
+  </p>
+
+  <p>
+  As you experiment with the concentration slider, a quiet but important pattern emerges, within 
+  any single category, Group A and Group B are treated almost identically. But because 
+  Group A is disproportionately steered into certain categories, and those categories 
+  happen to have different underlying delivery rates, the group level story you saw 
+  prior starts to feel incomplete. 
+
+  </p>
+
+
   <div class="toggle">
     <button class:active={view === 'aggregate'} on:click={() => (view = 'aggregate')}>
       Aggregate
@@ -295,5 +326,8 @@
   .charts-row svg {
     flex: 1;
     min-width: 0;
+  }
+  p {
+    margin-bottom: 1rem;
   }
 </style>

@@ -87,6 +87,18 @@
 <section class="coda">
   <h2>One More Place You've Seen This</h2>
   <p>
+    To close, let us step outside the world of advertising algorithm entirely, to that the same 
+    mathematical pattern shows up in a very different, very human context: the drawing of political 
+    district lines. Using a small fixed set of twenty five voters, thirteen leaning one way and twele 
+    the other, we show two different ways of grouping those exact same voters into five districts. 
+    Nobody moves, nobody changes their vote, and yet depending purely on where the district lines are 
+    drawn, the overall majority winner can flip entirely. It is a brief self contained aside rather than 
+    a full second investigation, included specifically to make the point that this isn't a quirk unique 
+    to ad delivery or machine learning. It's a general feature of how aggregation and grouping interact 
+    with any unevenly distributed population. 
+  </p>
+
+  <p>
     Here are the same 25 voters, 13 red, 12 blue that are arranged into 5 districts
     two different ways. Nobody moved. Nobody changed their vote. Only the
     district lines changed.
@@ -108,6 +120,17 @@
     Same voters. Same votes. Different lines, different winner, the same
     underlying pattern you just explored with ad delivery.
   </p>
+
+  <p>
+  What ties all of this together is a single, uncomfortable insight: fairness, at 
+  a level of a headline number, can be a mirage. Not because anyone is cheating 
+  the system, but because they way data gets grouped and summarized carries hidden 
+  assumptions about which comparisions matters. A system can be entirely fair within 
+  every category you check, and still produce a deeply unequal outcome overall, or 
+  the vice-versa. The only way to catch this is to look closer, to ask which slice 
+  of the data you are actually examining, and to stay skeptical of any single number 
+  that claims to settle the question of fairness on its own. 
+  </p>
 </section>
 
 <style>
@@ -119,4 +142,8 @@
   }
   .toggle button.active { background: #333; color: #fff; border-color: #333; }
   .result { font-size: 1.1rem; margin-top: 1rem; }
+  p {
+    margin-bottom: 1rem;
+    text-align: left;
+  }
 </style>

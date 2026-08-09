@@ -79,8 +79,26 @@
 
 <section class="act" id="act-3">
   <h2>{title}</h2>
+
   <p>
-    Here's the same data from before — but now let's check, automatically,
+  Seeing the reversal is one thing, understanding why it's mathematically inevitable is another. 
+  This is where the mechanism gets explained plainly, using both a live diagnostic tool and a 
+  fully worked numerical example.
+  </p>
+
+  <p>
+  The diagnostic tool is a simple status indicator that continuously checks the current data and 
+  tells you, in real time, whether the paradox condition currently holds: "Present" or "Absent" based 
+  on the same slider you were adjusting in The Reversal example. Next to it sits a small line chart 
+  that sweeps across every possible concentration level, from perfectly even to maximally skewed, and 
+  plots the resulting gap between Group A and Group B at each point. A single dot marks exactly where 
+  the slider setting falls on that curve. This turns an abstract idea "the paradox appears at some level 
+  of imbalance", into something provable and precise: you can watch the exact moment the gap crosses from 
+  negligible into significant. 
+  </p>
+
+  <p>
+    Here's the same data from before, but now let's check, automatically,
     whether the paradox is currently happening.
   </p>
 
@@ -107,8 +125,21 @@
 
   <h4>A worked example</h4>
   <p class="detail">
-    Same idea, now with actual head counts instead of percentages, 100
-    people in each group. Within every category, the same fraction of
+    To ground all of this in concrete numbers rather than just visuals, a worked 
+    arithmetic example is also included. Picture 100 people in each group. In the 
+    Employment Category, both groups get the ad at the same 20 percent rate, but 60 
+    of Group A'S 100 people fall into that category, compared to only 10 of Group B's. 
+    The same pattern repeats in Housing, at a 30 percent rate, and Retail, at a much 
+    higher 80 percent rate, with the group compositions again skewed in opposite directions. 
+    When you multiply out each category's rate by how many people from each group 
+    actually landed there, and add up the results, Group A ends up with a 29 percent 
+    overall delivery rate, while Group B ends up at 64 percent, a 35 point gap, despite 
+    individual category treating both groups identically. The math isn't a trick, it's 
+    simply what happens when you average numbers that are weighted very differently. 
+
+  </p>
+  <p>
+    Within every category, the same fraction of
     each group gets the ad. Only the number of people <em>in</em> each
     category differs between groups.
   </p>
@@ -221,5 +252,9 @@
   .totals-row td {
     background: #f5f5f5;
     border-top: 2px solid #999;
+  }
+  p {
+    margin-bottom: 1rem;
+    text-align: left;
   }
 </style>

@@ -72,6 +72,21 @@
 
 <section class="act" id="act-4">
   <h2>{title}</h2>
+
+  <p>
+    Just when the mechanism starts to feel settled, the fairness measuring metrics raises the stakes 
+    further. It turns out that "fair" isn't a single, fixed standard and it depends entirely on which 
+    definition of fairness you are applying, and the exact same dataset can satisfy one definition while 
+    failing another. 
+
+  </p>
+  <p>
+    Two metrics: 1. Demographic Parity, and 2. Equalized Odds, are used side by side to demonstrate the 
+    fainess on the same dataset. Demographic Parity asks a simple, unconditional question: do both groups 
+    get shown the ad at the same overall rate, full stop, regardess of whether the ad was actually a good 
+    match for them? Equalized Odds asks a more careful question: among the people the ad was genuinely 
+    relevant to, do both the groups get shown it at the same rate? 
+  </p>
   <p>
     For the same data and same imbalance settings, let us check it against two different definitions of "fair".
     
@@ -88,7 +103,7 @@
 
   <p class="detail">
     {#if metric === 'parity'}
-      Comparing overall delivery rates — everyone counted, regardless of relevance.
+      Comparing overall delivery rates, everyone counted, regardless of relevance.
     {:else}
       Comparing delivery rates only among people the ad was actually relevant to.
     {/if}
@@ -123,4 +138,8 @@
   .status.present { background: #fde2e2; }
   .slider-label { display: block; margin: 1.5rem 0 0.5rem; font-size: 0.95rem; color: #444; }
   input[type='range'] { width: 100%; margin-top: 0.5rem; }
+  p {
+    margin-bottom: 1rem;
+    text-align: left;
+  }
 </style>

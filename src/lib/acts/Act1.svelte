@@ -83,9 +83,25 @@
 
 <section class="act" id="act-1">
   <h2>{title}</h2>
+
+  <p>
+  The story opens the way most people would actually encounter this problem in real life,
+  from top down. You are shown a simulated advertising system delivery system delivering ads
+   to two groups, Group A and Group B. A slider lets you control how many total ad impressions 
+   are being simulated, and as you adjust it, you will notice something reassuring, the overall 
+  delivery rates for Group A and Group B stays close to one another, no matter how large or 
+  small the sample size gets. At this level, everything looks balanced. If this were the only view 
+  you ever saw, you would have no reason to suspect anything was wrong. 
+
+  </p>
   <p>
     Below is simulated ad delivery data across two demographic groups.
     At a glance, delivery rates look close and roughly balanced.
+  </p>
+
+  <p>
+  There is nothing malicious and it is showing you the view most dashboards, most audits, and 
+  most casual observers would actually see first.
   </p>
 
   <label class="slider-label">
@@ -116,5 +132,8 @@
   input[type='range'] {
     width: 100%;
     margin-top: 0.5rem;
+  }
+  p {
+    margin-bottom: 1rem;
   }
 </style>
