@@ -3,30 +3,31 @@
   import * as d3 from 'd3';
 
   // 25 voters, fixed: 13 red, 12 blue, same data for both plans
+  // Row-major order: index = row*5 + col
   const voters = [
-    'R','R','R','R','R','R','R','R','R','R','R','R','R',
-    'B','B','B','B','B','B','B','B','B','B','B','B'
+    'B','B','R','R','R',
+    'B','R','B','R','R',
+    'R','B','B','R','R',
+    'B','B','R','R','R',
+    'B','B','B','R','B'
   ];
 
-  // Plan A: cracks Blue thin across 4 districts, packs the rest into 1.
-  // Result: Red wins 4 districts to 1.
+  // Plan A: districts = rows (each row is a contiguous strip)
   const planA = [
-    [0, 1, 2, 3, 13],
-    [4, 5, 6, 14, 15],
-    [7, 8, 9, 16, 17],
-    [10, 11, 12, 18, 19],
+    [0, 1, 2, 3, 4],
+    [5, 6, 7, 8, 9],
+    [10, 11, 12, 13, 14],
+    [15, 16, 17, 18, 19],
     [20, 21, 22, 23, 24]
   ];
 
-  // Plan B: packs Blue into 3 winnable districts, concedes 2 all-Red
-  // districts. Result: Blue wins 3 districts to 2, a different
-  // majority winner, from the exact same 25 voters.
+  // Plan B: districts = columns (each column is a contiguous strip)
   const planB = [
-    [13, 14, 15, 16, 0],
-    [17, 18, 19, 20, 1],
-    [21, 22, 23, 24, 2],
-    [3, 4, 5, 6, 7],
-    [8, 9, 10, 11, 12]
+    [0, 5, 10, 15, 20],
+    [1, 6, 11, 16, 21],
+    [2, 7, 12, 17, 22],
+    [3, 8, 13, 18, 23],
+    [4, 9, 14, 19, 24]
   ];
 
   let plan = 'A';
@@ -89,7 +90,7 @@
   <p>
     To close, let us step outside the world of advertising algorithm entirely, to that the same 
     mathematical pattern shows up in a very different, very human context: the drawing of political 
-    district lines. Using a small fixed set of twenty five voters, thirteen leaning one way and twele 
+    district lines. Using a small fixed set of twenty five voters, thirteen leaning one way and twelve 
     the other, we show two different ways of grouping those exact same voters into five districts. 
     Nobody moves, nobody changes their vote, and yet depending purely on where the district lines are 
     drawn, the overall majority winner can flip entirely. It is a brief self contained aside rather than 
@@ -125,7 +126,7 @@
   What ties all of this together is a single, uncomfortable insight: fairness, at 
   a level of a headline number, can be a mirage. Not because anyone is cheating 
   the system, but because they way data gets grouped and summarized carries hidden 
-  assumptions about which comparisions matters. A system can be entirely fair within 
+  assumptions about which comparisons matters. A system can be entirely fair within 
   every category you check, and still produce a deeply unequal outcome overall, or 
   the vice-versa. The only way to catch this is to look closer, to ask which slice 
   of the data you are actually examining, and to stay skeptical of any single number 

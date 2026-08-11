@@ -16,10 +16,17 @@
   </header>
 
   <p>
-    Imagine an advertising platform that shows ads to different groups of people.
-  At the end of the month, someone pulls up a dashboard and checks if all thr groups are being treated equally?
-  The overall numbers say YES, each group is being shown ads at nearly the same rate. 
-  Case closed as the system looks fair. 
+  Imagine an advertising platform that shows ads to different groups
+of people job listings, housing offers, everyday retail promotions,
+all mixed together. At the end of the month, someone checks the
+numbers: are both groups being treated equally? For most of these ads,
+that question is a matter of curiosity. But for ads tied to employment
+and housing specifically, it's a live legal and ethical concern,
+protected under laws like Title VII and the Fair Housing Act and real
+audits of major ad platforms have found measurable delivery skew by
+gender and race, even when advertisers set completely neutral
+targeting. So when the dashboard says the numbers look balanced and everything feels fair, is
+that actually the end of the story?
 
   </p>
 
@@ -28,7 +35,7 @@
   were never telling the whole story. This is the premise of the demonstration for Simpson's Paradox. 
   Simpson's Paradox is a well documented statistical phenomenon where a trend that appears in 
   aggregated data can vanish or even reverse, when the same data is sliced down to natural subgroups. The vice versa is also true, meaning
-  a trend might appear in sugroups but might vanish or reverse for the aggregate data. 
+  a trend might appear in sugroups but vanish or reverse for the aggregate data. 
 
   It is not a glitch and it is not manipulation. It is a mathematical reality that shows up again and again in real systems, 
   from hiring pipelines to advertising platforms to healthcare to political redistricting. 
@@ -41,7 +48,7 @@
   </p>
 
   <p>
-  Before diving into the interactive pieces, it hels to understand the shape of the problem we are chasing. 
+  Before diving into the interactive pieces, it helps to understand the shape of the problem we are chasing. 
   Simpson's Paradox occurs when a pattern that holds true within every individual subgroup of a dataset disappears or flips entirely once the groups are combined into one aggregate category. 
   The unsettling part is that both views are mathematically correct at the same time. Nobody is lying and nothing is broken. The paradox exists because an aggregate number is really just a
    weighthed average, and how the average behaves depends heavily on how much weight each subgroup carries. Change the weigthing, and the story the average tells can change dramatically, 
@@ -63,6 +70,23 @@
 
   <footer>
     <p></p>
+    <footer>
+    <p>
+      <a href="https://github.com/bdoppalapudi/simpsons-fairness" target="_blank" rel="noopener">
+        View source on GitHub
+      </a>
+    </p>
+    <p class="contact-invite">
+      Have thoughts on this, or just want to talk research over a cup of
+      digital coffee? Reach out.
+    </p>
+    <p class="contact">
+      Bhavana Doppalapudi &middot;
+      <a href="mailto:bhavanadoppalapudi@gmail.com">Email</a> &middot;
+      <a href="https://linkedin.com/in/doppalapudib" target="_blank" rel="noopener">LinkedIn</a> &middot;
+      <a href="https://bhavanadoppalapudi.com/" target="_blank" rel="noopener">Website</a>
+    </p>
+  </footer>
   </footer>
 </main>
 
@@ -103,5 +127,23 @@
     padding: 3rem 2rem;
     text-align: center;
     color: #999;
+  }
+  footer a {
+    color: #6B4E9E;
+    text-decoration: none;
+  }
+  footer a:hover {
+    text-decoration: underline;
+  }
+  .contact {
+    font-size: 0.85rem;
+    color: #888;
+    margin-top: 0.5rem;
+  }
+  .contact-invite {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 1rem;
+    margin-bottom: 0.3rem;
   }
 </style>

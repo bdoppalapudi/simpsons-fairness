@@ -72,12 +72,12 @@
 
 <section class="act" id="act-4">
   <h2>{title}</h2>
-
   <p>
-    Just when the mechanism starts to feel settled, the fairness measuring metrics raises the stakes 
-    further. It turns out that "fair" isn't a single, fixed standard and it depends entirely on which 
-    definition of fairness you are applying, and the exact same dataset can satisfy one definition while 
-    failing another. 
+  Back in example 1, we asked whether "balanced overall" was really the right bar for fairness to clear, 
+  here's where that question finally gets answered, and the answer turns out to depend on which definition of
+  "fair" you're using. It turns out that "fair" isn't a single, fixed standard and it depends entirely on which 
+  definition of fairness you are applying, and the exact same dataset can satisfy one definition while 
+  failing another. 
 
   </p>
   <p>
@@ -85,11 +85,15 @@
     fainess on the same dataset. Demographic Parity asks a simple, unconditional question: do both groups 
     get shown the ad at the same overall rate, full stop, regardess of whether the ad was actually a good 
     match for them? Equalized Odds asks a more careful question: among the people the ad was genuinely 
-    relevant to, do both the groups get shown it at the same rate? 
+    relevant to, do both the groups get shown it at the same rate? A toggle lets you switch between these 
+    two lenses while the underlying concentration slider stays exactly where you left it, so you can watch 
+    both metrics respond to the same conditions. 
   </p>
   <p>
-    For the same data and same imbalance settings, let us check it against two different definitions of "fair".
-    
+    What you will find is that Demographic Parity can report "fair" even as Equalized Odds reports "not fair" 
+    on the very same data. This isn't a bug in either metric, it is a reflection of the fact that they are 
+    answering genuinely different questions, and a system can honestly satisfy one while falling short of 
+    the other. 
   </p>
 
   <div class="toggle">

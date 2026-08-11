@@ -86,22 +86,19 @@
 
   <p>
   The story opens the way most people would actually encounter this problem in real life,
-  from top down. You are shown a simulated advertising system delivery system delivering ads
+  from top down. You are shown a simulated advertising delivery system delivering ads
    to two groups, Group A and Group B. A slider lets you control how many total ad impressions 
    are being simulated, and as you adjust it, you will notice something reassuring, the overall 
   delivery rates for Group A and Group B stays close to one another, no matter how large or 
-  small the sample size gets. At this level, everything looks balanced. If this were the only view 
-  you ever saw, you would have no reason to suspect anything was wrong. 
+  small the sample size gets.   
 
-  </p>
-  <p>
-    Below is simulated ad delivery data across two demographic groups.
-    At a glance, delivery rates look close and roughly balanced.
   </p>
 
   <p>
   There is nothing malicious and it is showing you the view most dashboards, most audits, and 
-  most casual observers would actually see first.
+  most casual observers would actually see first. At this level, everything looks balanced, but "balanced overall" is 
+  only one way to define fairness, and it's worth asking whether it's the right one before 
+  accepting it as the final word.
   </p>
 
   <label class="slider-label">
@@ -135,5 +132,6 @@
   }
   p {
     margin-bottom: 1rem;
+    text-align: left;
   }
 </style>

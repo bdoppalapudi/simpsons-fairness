@@ -82,7 +82,7 @@
 
   <p>
   Seeing the reversal is one thing, understanding why it's mathematically inevitable is another. 
-  This is where the mechanism gets explained plainly, using both a live diagnostic tool and a 
+  The mechanism is explained plainly, using both a live diagnostic tool and a 
   fully worked numerical example.
   </p>
 
@@ -95,11 +95,6 @@
   the slider setting falls on that curve. This turns an abstract idea "the paradox appears at some level 
   of imbalance", into something provable and precise: you can watch the exact moment the gap crosses from 
   negligible into significant. 
-  </p>
-
-  <p>
-    Here's the same data from before, but now let's check, automatically,
-    whether the paradox is currently happening.
   </p>
 
   <div class="status" class:present={paradoxStatus.paradoxPresent}>
@@ -125,8 +120,7 @@
 
   <h4>A worked example</h4>
   <p class="detail">
-    To ground all of this in concrete numbers rather than just visuals, a worked 
-    arithmetic example is also included. Picture 100 people in each group. In the 
+    Picture 100 people in each group. In the 
     Employment Category, both groups get the ad at the same 20 percent rate, but 60 
     of Group A'S 100 people fall into that category, compared to only 10 of Group B's. 
     The same pattern repeats in Housing, at a 30 percent rate, and Retail, at a much 

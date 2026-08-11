@@ -239,13 +239,9 @@
 
 <section class="act" id="act-2">
   <h2>{title}</h2>
-  <p>
-    Let's look closer this time, split by the type of ad being delivered:
-    Employment, Housing, or Retail.
-  </p>
 
   <p>
-  Here, the story turns. Instead of looking only at the big picture, you are invited to 
+  Let's look closer this time and here, the story turns. Instead of looking only at the big picture, you are invited to 
   slice the same data by the type of ad being delivered, Employment ads, Housing ads, 
   and Retail ads. A toggle lets you switch between the aggregate view you just saw and 
   this new, more granular view. Alongside the toggle is a slider that controls how concentrated 
@@ -261,8 +257,7 @@
   from the aggregate view to the by-category view, you don't see a new chart appear out 
   of nowhere, you watch the very same icons glide from a single undivided crowd into three 
   distinct clusters, one per category. Nobody is added. Nobody disappears. The only thing that 
-  changes is how they're grouped. The visual continuity matters, because it's proof, not 
-  assertion, that this is still the same dataset you were looking at moment ago. 
+  changes is how they're grouped.
   </p>
 
   <p>
@@ -274,6 +269,11 @@
 
   </p>
 
+
+  <p class="predict">
+    Before you click, what do you expect to happen when we split this
+    same data by category? Take a guess, then find out.
+  </p>
 
   <div class="toggle">
     <button class:active={view === 'aggregate'} on:click={() => (view = 'aggregate')}>
@@ -327,7 +327,13 @@
     flex: 1;
     min-width: 0;
   }
+  .predict {
+    font-style: italic;
+    color: #555;
+    margin-top: 1rem;
+  }
   p {
     margin-bottom: 1rem;
+    text-align: left;
   }
 </style>
