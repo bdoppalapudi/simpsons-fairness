@@ -97,6 +97,13 @@ that actually the end of the story?
     color: #1a1a1a;
     background: #fdfdfb;
     line-height: 1.6;
+    color-scheme: light;
+  }
+  :global(h1),
+  :global(h2),
+  :global(h3),
+  :global(h4) {
+    color: #1a1a1a;
   }
   main {
     max-width: 750px;
